@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#1a1a1a"/>
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="#d3e97a" stroke-width="0.5" opacity="0.5"/>
+  <text x="16" y="22" text-anchor="middle" font-family="Bebas Neue, Arial, sans-serif" font-size="18" font-weight="bold" fill="#d3e97a">SR</text>
+</svg>
