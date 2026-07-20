@@ -1,0 +1,21 @@
+<!--
+  EmailJS Email Template — Portfolio Contact Form
+  Tema oscuro combinando con el sitio. Variables: {{name}}, {{email}}, {{message}}
+  Asunto sugerido: "Nuevo mensaje de {{name}} desde el portfolio"
+-->
+<div style="font-family: Arial, sans-serif; padding: 20px; color: #ffffff; background-color:#212529">
+  <h2>¡Hola! Has recibido un nuevo mensaje desde tu sitio web.</h2>
+
+  <hr style="border: none; border-top: 1px solid #d3e97a; margin: 20px 0;">
+  
+  <p><strong>Nombre del remitente:</strong> {{name}}</p>
+  <p><strong>Correo electrónico:</strong> {{email}}</p>
+  
+  <p><strong>Mensaje:</strong></p>
+  <div style="background-color: #d3e97a; padding: 15px; border-radius: 5px; color: #0a0a0a">
+    {{message}}
+  </div>
+
+  <hr style="border: none; border-top: 1px solid #d3e97a; margin: 20px 0;">
+  <p style="font-size: 12px; color: #777;">Enviado automáticamente desde el formulario de contacto.</p>
+</div>
