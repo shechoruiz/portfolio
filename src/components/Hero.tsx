@@ -24,11 +24,8 @@ function Hero() {
             </h1>
 
             <p className="lead fs-4 mb-5">
-              Desarrollador Sr con sólida trayectoria en el ecosistema React.js
-              y React Native para la creación de interfaces de usuario
-              escalables. Experto en el ciclo de vida del desarrollo de
-              software, incluyendo el liderazgo de equipos técnicos, despliegue
-              en entornos productivos y consumo eficiente de REST APIs.
+              Ingeniero de Software con más de 6 años de experiencia creando
+              productos digitales escalables.
             </p>
 
             <div className="d-flex gap-3 flex-wrap align-items-center">

@@ -44,9 +44,9 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         <h5 className="card-title">{project.title}</h5>
         <p className="card-text text-white-50 flex-grow-1">{project.description}</p>
 
-        <div className="mb-3">
+        <div className="mb-3 d-flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <span key={tech} className="badge badge-outline me-1">
+            <span key={tech} className="badge badge-outline">
               {tech}
             </span>
           ))}
