@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+:root {
+  --bs-primary: #2563eb;
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-body-font-family: 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+  --bs-heading-font-family: 'Bebas Neue', sans-serif;
+  --accent-color: #d3e97a;
+}
+
+body {
+  background-color: #0a0a0a !important;
+  color: #e5e5e5 !important;
+}
+
+/* Navbar hover effect */
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #d3e97a !important;
+}
+
+/* Navbar offset for anchor scrolling */
+section[id],
+div[id] {
+  scroll-margin-top: 70px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 5rem 0;
+  }
+}
+
+/* Dark theme cards */
+.card-dark {
+  background-color: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #e5e5e5;
+}
+
+/* Accent button */
+.btn-accent {
+  background-color: var(--accent-color) !important;
+  color: #0a0a0a !important;
+  border-color: var(--accent-color) !important;
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  background-color: #c5d76e !important;
+  color: #0a0a0a !important;
+}
+
+/* Skill badge outline */
+.badge-outline {
+  background-color: transparent !important;
+  color: #e5e5e5 !important;
+  border: 1px solid #e5e5e5 !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 400 !important;
+}
+
+/* Accent border */
+.border-accent {
+  border-color: var(--accent-color) !important;
+}
+
+/* Dark form controls */
+.form-control-dark {
+  background-color: #1a1a1a !important;
+  border-color: #333 !important;
+  color: #e5e5e5 !important;
+}
+
+.form-control-dark:focus {
+  background-color: #1a1a1a !important;
+  border-color: var(--accent-color) !important;
+  color: #e5e5e5 !important;
+  box-shadow: 0 0 0 0.2rem rgba(211, 233, 122, 0.25);
+}
+
+.form-control-dark::placeholder {
+  color: #888 !important;
+}
+
+/* Timeline */
+.timeline-item:not(:last-child)::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: #2a2a2a;
+  margin-top: 1.5rem;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
