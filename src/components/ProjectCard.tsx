@@ -28,20 +28,30 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       className="card card-dark h-100 shadow-sm fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div
-        className="card-img-top d-flex align-items-center justify-content-center"
-        style={{
-          background: `linear-gradient(135deg, ${color}, ${color}dd)`,
-          height: 180,
-        }}
-      >
-        <span
-          className="fw-bold text-white"
-          style={{ fontSize: '2.5rem', fontFamily: 'var(--bs-heading-font-family)' }}
+      {project.imageUrl ? (
+        <img
+          src={project.imageUrl}
+          alt={title}
+          className="card-img-top"
+          style={{ height: 180, objectFit: 'cover' }}
+          loading="lazy"
+        />
+      ) : (
+        <div
+          className="card-img-top d-flex align-items-center justify-content-center"
+          style={{
+            background: `linear-gradient(135deg, ${color}, ${color}dd)`,
+            height: 180,
+          }}
         >
-          {initials}
-        </span>
-      </div>
+          <span
+            className="fw-bold text-white"
+            style={{ fontSize: '2.5rem', fontFamily: 'var(--bs-heading-font-family)' }}
+          >
+            {initials}
+          </span>
+        </div>
+      )}
 
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
