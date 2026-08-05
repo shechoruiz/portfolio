@@ -1,6 +1,28 @@
 import type { Project } from '../types'
+import shelfImage from '../assets/images/TiendaShelf.webp'
 
 export const projects: Project[] = [
+  {
+    id: 'shelf',
+    title: {
+      es: 'Shelf — E-commerce Multi-tenant',
+      en: 'Shelf — Multi-tenant E-commerce',
+    },
+    description: {
+      es: 'Plataforma multi-tenant de e-commerce tipo Shopify donde cada tienda tiene su propia marca, productos, colores y datos aislados.',
+      en: 'Shopify-style multi-tenant e-commerce platform where each store has its own brand, products, colors, and isolated data.',
+    },
+    techStack: [
+      'React',
+      'Fastify',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'Tailwind',
+    ],
+    imageUrl: shelfImage,
+    projectUrl: 'https://github.com/shechoruiz/multi-tenant-web',
+  },
   {
     id: 'gestor-tareas',
     title: {

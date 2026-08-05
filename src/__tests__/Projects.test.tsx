@@ -16,8 +16,9 @@ describe('Projects', () => {
     expect(screen.getByText('Proyectos')).toBeInTheDocument()
   })
 
-  it('renders all three project cards', () => {
+  it('renders all project cards', () => {
     renderProjects()
+    expect(screen.getByText('Shelf — E-commerce Multi-tenant')).toBeInTheDocument()
     expect(screen.getByText('Gestor de Tareas')).toBeInTheDocument()
     expect(screen.getByText('API de Comercio Electrónico')).toBeInTheDocument()
     expect(screen.getByText('Dashboard Analytics')).toBeInTheDocument()
