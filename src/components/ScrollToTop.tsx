@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../i18n'
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => {
@@ -19,7 +21,7 @@ function ScrollToTop() {
     <button
       type="button"
       onClick={handleClick}
-      aria-label="Volver arriba"
+      aria-label={t.scrollToTop.ariaLabel}
       className="btn shadow-lg d-flex align-items-center justify-content-center"
       style={{
         position: 'fixed',

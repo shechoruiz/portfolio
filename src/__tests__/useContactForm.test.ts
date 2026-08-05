@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react'
 import { useContactForm } from '../hooks/useContactForm'
+import { LanguageProvider } from '../i18n'
 
 const mockConfig = {
   serviceId: 'test_service',
@@ -7,9 +8,15 @@ const mockConfig = {
   publicKey: 'test_key',
 }
 
+function renderForm(config = mockConfig) {
+  return renderHook(() => useContactForm(config), {
+    wrapper: LanguageProvider,
+  })
+}
+
 describe('useContactForm', () => {
   it('starts with idle status and empty fields', () => {
-    const { result } = renderHook(() => useContactForm(mockConfig))
+    const { result } = renderForm()
 
     expect(result.current.status).toBe('idle')
     expect(result.current.fields).toEqual({
@@ -21,7 +28,7 @@ describe('useContactForm', () => {
   })
 
   it('validates empty fields on submit', async () => {
-    const { result } = renderHook(() => useContactForm(mockConfig))
+    const { result } = renderForm()
 
     await act(async () => {
       await result.current.handleSubmit({
@@ -36,7 +43,7 @@ describe('useContactForm', () => {
   })
 
   it('validates invalid email format', async () => {
-    const { result } = renderHook(() => useContactForm(mockConfig))
+    const { result } = renderForm()
 
     await act(async () => {
       result.current.handleChange({
@@ -54,7 +61,7 @@ describe('useContactForm', () => {
   })
 
   it('updates fields on handleChange', () => {
-    const { result } = renderHook(() => useContactForm(mockConfig))
+    const { result } = renderForm()
 
     act(() => {
       result.current.handleChange({
@@ -66,7 +73,7 @@ describe('useContactForm', () => {
   })
 
   it('clears field errors after successful change', async () => {
-    const { result } = renderHook(() => useContactForm(mockConfig))
+    const { result } = renderForm()
 
     // Submit empty to trigger errors
     await act(async () => {

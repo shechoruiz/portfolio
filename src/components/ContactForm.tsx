@@ -1,5 +1,6 @@
 import { useContactForm } from "../hooks/useContactForm";
-import type { EmailJSConfig, FormFields } from "../types";
+import { useLanguage } from "../i18n";
+import type { EmailJSConfig } from "../types";
 
 const EMAILJS_CONFIG: EmailJSConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
@@ -7,30 +8,27 @@ const EMAILJS_CONFIG: EmailJSConfig = {
   publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
 };
 
-const FIELD_LABELS: Record<keyof FormFields, string> = {
-  name: "Nombre",
-  email: "Email",
-  message: "Mensaje",
-};
-
 function ContactForm() {
   const { fields, errors, status, handleChange, handleSubmit } =
     useContactForm(EMAILJS_CONFIG);
+  const { t } = useLanguage();
 
   const isLoading = status === "loading";
+  const labels = t.contactForm.labels;
+  const placeholders = t.contactForm.placeholders;
 
   return (
     <section id="contact" className="bg-dark text-light py-5">
       <div className="container" style={{ maxWidth: 600 }}>
-        <h2 className="display-4 text-center mb-2">Contacto</h2>
+        <h2 className="display-4 text-center mb-2">{t.contactForm.title}</h2>
         <p className="lead text-center mb-5 text-white-50">
-          ¿Tienes un proyecto en mente? Trabajemos juntos
+          {t.contactForm.subtitle}
         </p>
 
         <form onSubmit={handleSubmit} noValidate>
           <div className="mb-3">
             <label htmlFor="name" className="form-label text-white-50">
-              {FIELD_LABELS.name}
+              {labels.name}
             </label>
             <input
               id="name"
@@ -39,6 +37,7 @@ function ContactForm() {
               className={`form-control form-control-dark${errors.name ? " is-invalid" : ""}`}
               value={fields.name}
               onChange={handleChange}
+              placeholder={placeholders.name}
               disabled={isLoading}
               required
               minLength={2}
@@ -50,7 +49,7 @@ function ContactForm() {
 
           <div className="mb-3">
             <label htmlFor="email" className="form-label text-white-50">
-              {FIELD_LABELS.email}
+              {labels.email}
             </label>
             <input
               id="email"
@@ -59,6 +58,7 @@ function ContactForm() {
               className={`form-control form-control-dark${errors.email ? " is-invalid" : ""}`}
               value={fields.email}
               onChange={handleChange}
+              placeholder={placeholders.email}
               disabled={isLoading}
               required
             />
@@ -69,7 +69,7 @@ function ContactForm() {
 
           <div className="mb-4">
             <label htmlFor="message" className="form-label text-white-50">
-              {FIELD_LABELS.message}
+              {labels.message}
             </label>
             <textarea
               id="message"
@@ -78,6 +78,7 @@ function ContactForm() {
               rows={5}
               value={fields.message}
               onChange={handleChange}
+              placeholder={placeholders.message}
               disabled={isLoading}
               required
               minLength={10}
@@ -100,23 +101,23 @@ function ContactForm() {
                     role="status"
                     aria-hidden="true"
                   />
-                  Enviando...
+                  {t.contactForm.sending}
                 </>
               ) : (
-                "Enviar mensaje"
+                t.contactForm.submit
               )}
             </button>
           </div>
 
           {status === "success" && (
             <div className="alert alert-success mt-3 mb-0" role="alert">
-              ¡Mensaje enviado!
+              {t.contactForm.success}
             </div>
           )}
 
           {status === "error" && (
             <div className="alert alert-danger mt-3 mb-0" role="alert">
-              Error al enviar. Intentá de nuevo.
+              {t.contactForm.error}
             </div>
           )}
         </form>

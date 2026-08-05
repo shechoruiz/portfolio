@@ -1,8 +1,10 @@
 import { useState, useCallback } from "react";
 import { socialLinks } from "../data/social";
+import { useLanguage } from "../i18n";
 
 function Hero() {
   const [imgError, setImgError] = useState(false);
+  const { t } = useLanguage();
   const profileSrc = new URL("../assets/images/profile.webp", import.meta.url)
     .href;
 
@@ -20,12 +22,11 @@ function Hero() {
               className="display-1 fw-bold mb-2"
               style={{ fontFamily: "var(--bs-heading-font-family)" }}
             >
-              Hola, soy Sergio Ruiz
+              {t.hero.greeting}
             </h1>
 
             <p className="lead fs-4 mb-5">
-              Ingeniero de Software con más de 6 años de experiencia creando
-              productos digitales escalables.
+              {t.hero.subtitle}
             </p>
 
             <div className="d-flex gap-3 flex-wrap align-items-center">
@@ -34,7 +35,7 @@ function Hero() {
                 className="btn btn-accent px-4 py-2"
                 onClick={handleContactClick}
               >
-                Contacto
+                {t.hero.contactCta}
               </button>
 
               <a

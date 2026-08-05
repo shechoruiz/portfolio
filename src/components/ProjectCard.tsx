@@ -1,4 +1,5 @@
 import type { Project } from '../types'
+import { pick, useLanguage } from '../i18n'
 
 interface ProjectCardProps {
   project: Project
@@ -17,8 +18,10 @@ function getInitials(title: string): string {
 }
 
 function ProjectCard({ project, index }: ProjectCardProps) {
+  const { t, lang } = useLanguage()
   const color = GRADIENT_COLORS[index % GRADIENT_COLORS.length]
-  const initials = getInitials(project.title)
+  const title = pick(project.title, lang)
+  const initials = getInitials(title)
 
   return (
     <div
@@ -41,8 +44,10 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{project.title}</h5>
-        <p className="card-text text-white-50 flex-grow-1">{project.description}</p>
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text text-white-50 flex-grow-1">
+          {pick(project.description, lang)}
+        </p>
 
         <div className="mb-3 d-flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
@@ -59,7 +64,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             rel="noopener noreferrer"
             className="btn btn-accent btn-sm align-self-start"
           >
-            Ver proyecto
+            {t.projectCard.viewProject}
           </a>
         )}
       </div>

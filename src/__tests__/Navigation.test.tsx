@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Navigation from '../components/Navigation'
+import { LanguageProvider } from '../i18n'
 
 function renderNav() {
   return render(
     <MemoryRouter>
-      <Navigation />
+      <LanguageProvider>
+        <Navigation />
+      </LanguageProvider>
     </MemoryRouter>,
   )
 }
@@ -27,6 +30,12 @@ describe('Navigation', () => {
     const contacto = screen.getByText('Contacto')
     expect(contacto).toBeInTheDocument()
     expect(contacto.closest('a')).toHaveAttribute('href', '#contact')
+  })
+
+  it('renders language toggle', () => {
+    renderNav()
+    expect(screen.getByRole('button', { name: 'ES' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'EN' })).toBeInTheDocument()
   })
 
   it('renders navbar with dark theme classes', () => {

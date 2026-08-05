@@ -1,3 +1,5 @@
+export type LocalizedText = { es: string; en: string }
+
 export interface Skill {
   name: string
   category: SkillCategory
@@ -7,8 +9,8 @@ export type SkillCategory = 'Frontend' | 'Backend & Cloud' | 'Tools'
 
 export interface Project {
   id: string
-  title: string
-  description: string
+  title: LocalizedText
+  description: LocalizedText
   techStack: string[]
   imageUrl?: string
   projectUrl?: string
@@ -36,8 +38,8 @@ export interface EmailJSConfig {
 
 export interface Experience {
   id: string
-  role: string
+  role: LocalizedText
   company: string
-  period: string
-  highlights: string[]
+  period: LocalizedText
+  highlights: LocalizedText[]
 }
