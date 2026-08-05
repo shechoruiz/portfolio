@@ -1,38 +1,47 @@
 import { render, screen } from '@testing-library/react'
 import Hero from '../components/Hero'
+import { LanguageProvider } from '../i18n'
+
+function renderHero() {
+  return render(
+    <LanguageProvider>
+      <Hero />
+    </LanguageProvider>,
+  )
+}
 
 describe('Hero', () => {
   it('renders name greeting and subtitle', () => {
-    render(<Hero />)
+    renderHero()
     expect(screen.getByText('Hola, soy Sergio Ruiz')).toBeInTheDocument()
     expect(
-      screen.getByText(/Desarrollador Sr/i),
+      screen.getByText(/Ingeniero de Sistemas/i),
     ).toBeInTheDocument()
   })
 
   it('renders Contacto button', () => {
-    render(<Hero />)
+    renderHero()
     const btn = screen.getByText('Contacto')
     expect(btn).toBeInTheDocument()
     expect(btn.closest('button')).toHaveClass('btn-accent')
   })
 
   it('renders GitHub link', () => {
-    render(<Hero />)
+    renderHero()
     const github = screen.getByLabelText('GitHub')
     expect(github).toBeInTheDocument()
     expect(github).toHaveAttribute('target', '_blank')
   })
 
   it('renders LinkedIn link', () => {
-    render(<Hero />)
+    renderHero()
     const linkedin = screen.getByLabelText('LinkedIn')
     expect(linkedin).toBeInTheDocument()
     expect(linkedin).toHaveAttribute('target', '_blank')
   })
 
   it('renders profile image with fallback on error', () => {
-    render(<Hero />)
+    renderHero()
     const img = screen.getByAltText('Sergio Ruiz')
     expect(img).toBeInTheDocument()
     expect(img).toHaveClass('img-fluid')

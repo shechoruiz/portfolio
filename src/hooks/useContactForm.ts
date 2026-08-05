@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
+import { useLanguage } from '../i18n'
+import type { Translations } from '../i18n'
 import type { EmailJSConfig, FormFields, FormStatus } from '../types'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -8,25 +10,27 @@ const INITIAL_FIELDS: FormFields = { name: '', email: '', message: '' }
 
 function validate(
   fields: FormFields,
+  messages: Translations['validation'],
 ): Partial<Record<keyof FormFields, string>> {
   const errors: Partial<Record<keyof FormFields, string>> = {}
 
   if (!fields.name || fields.name.trim().length < 2) {
-    errors.name = 'El nombre debe tener al menos 2 caracteres'
+    errors.name = messages.nameTooShort
   }
 
   if (!fields.email || !EMAIL_REGEX.test(fields.email)) {
-    errors.email = 'Ingresa un email válido'
+    errors.email = messages.invalidEmail
   }
 
   if (!fields.message || fields.message.trim().length < 10) {
-    errors.message = 'El mensaje debe tener al menos 10 caracteres'
+    errors.message = messages.messageTooShort
   }
 
   return errors
 }
 
 export function useContactForm(emailJsConfig: EmailJSConfig) {
+  const { t } = useLanguage()
   const [fields, setFields] = useState<FormFields>(INITIAL_FIELDS)
   const [errors, setErrors] = useState<
     Partial<Record<keyof FormFields, string>>
@@ -50,7 +54,7 @@ export function useContactForm(emailJsConfig: EmailJSConfig) {
 
     if (status === 'loading') return
 
-    const validationErrors = validate(fields)
+    const validationErrors = validate(fields, t.validation)
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
       return

@@ -1,35 +1,44 @@
 import { render, screen } from '@testing-library/react'
 import About from '../components/About'
+import { LanguageProvider } from '../i18n'
+
+function renderAbout() {
+  return render(
+    <LanguageProvider>
+      <About />
+    </LanguageProvider>,
+  )
+}
 
 describe('About', () => {
   it('renders section title', () => {
-    render(<About />)
+    renderAbout()
     expect(screen.getByText('Sobre Mí')).toBeInTheDocument()
   })
 
   it('renders the bio paragraph', () => {
-    render(<About />)
+    renderAbout()
     expect(
-      screen.getByText(/desarrollador fullstack/i),
+      screen.getByText(/desarrollador de software apasionado/i),
     ).toBeInTheDocument()
   })
 
   it('renders category headings', () => {
-    render(<About />)
+    renderAbout()
     expect(screen.getByText('Frontend')).toBeInTheDocument()
-    expect(screen.getByText('Backend & Cloud')).toBeInTheDocument()
-    expect(screen.getByText('Tools')).toBeInTheDocument()
+    expect(screen.getByText('Backend y Cloud')).toBeInTheDocument()
+    expect(screen.getByText('Herramientas')).toBeInTheDocument()
   })
 
   it('renders skill badges', () => {
-    render(<About />)
+    renderAbout()
     expect(screen.getByText('React.js')).toBeInTheDocument()
     expect(screen.getByText('TypeScript')).toBeInTheDocument()
     expect(screen.getByText('Git')).toBeInTheDocument()
   })
 
   it('renders skills with outline class', () => {
-    render(<About />)
+    renderAbout()
     const badge = screen.getByText('React.js')
     expect(badge).toHaveClass('badge-outline')
   })

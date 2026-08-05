@@ -1,21 +1,30 @@
 import { render, screen } from '@testing-library/react'
 import Experience from '../components/Experience'
+import { LanguageProvider } from '../i18n'
+
+function renderExperience() {
+  return render(
+    <LanguageProvider>
+      <Experience />
+    </LanguageProvider>,
+  )
+}
 
 describe('Experience', () => {
   it('renders section title', () => {
-    render(<Experience />)
+    renderExperience()
     expect(screen.getByText('Experiencia')).toBeInTheDocument()
   })
 
   it('renders all three companies', () => {
-    render(<Experience />)
+    renderExperience()
     expect(screen.getByText('CARROYA S.A.S.')).toBeInTheDocument()
     expect(screen.getByText('BAVARIA S.C.A.')).toBeInTheDocument()
     expect(screen.getByText('EDEMCO S.A.S.')).toBeInTheDocument()
   })
 
   it('renders all three roles', () => {
-    render(<Experience />)
+    renderExperience()
     expect(
       screen.getByText('DESARROLLADOR FRONTEND SR'),
     ).toBeInTheDocument()
@@ -28,14 +37,14 @@ describe('Experience', () => {
   })
 
   it('renders period dates', () => {
-    render(<Experience />)
+    renderExperience()
     expect(screen.getByText('Abr 2022 - Jun 2026')).toBeInTheDocument()
     expect(screen.getByText('Jul 2021 - Abr 2022')).toBeInTheDocument()
     expect(screen.getByText('Feb 2020 - Jul 2021')).toBeInTheDocument()
   })
 
   it('renders highlights for each experience', () => {
-    render(<Experience />)
+    renderExperience()
     expect(
       screen.getByText(/funcionalidades clave/i),
     ).toBeInTheDocument()

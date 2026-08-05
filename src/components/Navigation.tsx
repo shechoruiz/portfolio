@@ -1,13 +1,15 @@
 import { useState, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
-
-const NAV_ITEMS = [
-  { label: 'Inicio', to: '/' },
-  { label: 'Sobre Mí', to: '/about' },
-] as const
+import { useLanguage } from '../i18n'
 
 function Navigation() {
   const [expanded, setExpanded] = useState(false)
+  const { t, lang, setLang } = useLanguage()
+
+  const navItems = [
+    { label: t.nav.home, to: '/' },
+    { label: t.nav.about, to: '/about' },
+  ]
 
   const handleNavClick = useCallback(() => {
     setExpanded(false)
@@ -40,7 +42,7 @@ function Navigation() {
           onClick={() => setExpanded((prev) => !prev)}
           aria-controls="navbarNav"
           aria-expanded={expanded}
-          aria-label="Toggle navigation"
+          aria-label={t.nav.toggleAriaLabel}
         >
           <span className="navbar-toggler-icon" />
         </button>
@@ -50,8 +52,8 @@ function Navigation() {
           id="navbarNav"
         >
           <ul className="navbar-nav ms-auto">
-            {NAV_ITEMS.map(({ label, to }) => (
-              <li className="nav-item" key={`${label}-${to}`}>
+            {navItems.map(({ label, to }) => (
+              <li className="nav-item" key={to}>
                 <NavLink
                   to={to}
                   end={to === '/'}
@@ -70,10 +72,33 @@ function Navigation() {
                 className="nav-link"
                 onClick={handleContactClick}
               >
-                Contacto
+                {t.nav.contact}
               </a>
             </li>
           </ul>
+
+          <div
+            className="btn-group btn-group-sm ms-3 mt-2 mt-lg-0"
+            role="group"
+            aria-label={t.nav.languageSelectorAriaLabel}
+          >
+            <button
+              type="button"
+              className={`btn ${lang === 'es' ? 'btn-accent' : 'btn-outline-light'}`}
+              onClick={() => setLang('es')}
+              aria-pressed={lang === 'es'}
+            >
+              ES
+            </button>
+            <button
+              type="button"
+              className={`btn ${lang === 'en' ? 'btn-accent' : 'btn-outline-light'}`}
+              onClick={() => setLang('en')}
+              aria-pressed={lang === 'en'}
+            >
+              EN
+            </button>
+          </div>
         </div>
       </div>
     </nav>
