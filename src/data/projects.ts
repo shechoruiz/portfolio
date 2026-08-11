@@ -1,7 +1,22 @@
 import type { Project } from '../types'
+import cmpImage from '../assets/images/ColombiaMatchPredictor.webp'
 import shelfImage from '../assets/images/TiendaShelf.webp'
 
 export const projects: Project[] = [
+  {
+    id: 'colombia-match-predictor',
+    title: {
+      es: 'Colombia Match Predictor',
+      en: 'Colombia Match Predictor',
+    },
+    description: {
+      es: 'App web de predicción de resultados 1X2 de la Liga BetPlay de Colombia, con modelo estadístico propio, historial de predicciones y validación de aciertos.',
+      en: 'Web app for 1X2 match prediction of Colombia\'s Liga BetPlay, with a custom statistical model, prediction history, and hit validation.',
+    },
+    techStack: ['React', 'TypeScript', 'Tailwind', 'TanStack Query', 'Zustand'],
+    imageUrl: cmpImage,
+    projectUrl: 'https://github.com/shechoruiz/colombia-match-predictor',
+  },
   {
     id: 'shelf',
     title: {
