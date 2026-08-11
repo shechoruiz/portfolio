@@ -15,6 +15,9 @@ const es = {
       'Ingeniero de Sistemas con más de 6 años de experiencia creando productos digitales escalables.',
     contactCta: 'Contacto',
   },
+  cv: {
+    downloadCv: 'Descargar CV (PDF)',
+  },
   about: {
     title: 'Sobre Mí',
     bio: 'Soy un desarrollador de software apasionado por crear aplicaciones web y móviles de alta calidad. Me especializo en React, React Native y Node.js, combinando buenas prácticas de desarrollo, pruebas automatizadas y diseño responsive para construir productos que marcan la diferencia. Creo firmemente en el aprendizaje continuo y en compartir conocimiento con la comunidad.',
@@ -80,6 +83,9 @@ const en: typeof es = {
     subtitle:
       'Systems engineer with 6+ years of experience building scalable digital products.',
     contactCta: 'Contact',
+  },
+  cv: {
+    downloadCv: 'Download CV (PDF)',
   },
   about: {
     title: 'About Me',
