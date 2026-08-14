@@ -1,6 +1,7 @@
 import type { Project } from '../types'
 import cmpImage from '../assets/images/ColombiaMatchPredictor.webp'
 import shelfImage from '../assets/images/TiendaShelf.webp'
+import heroesImage from '../assets/images/superheroes.webp'
 
 export const projects: Project[] = [
   {
@@ -14,6 +15,7 @@ export const projects: Project[] = [
       en: 'DC and Marvel heroes and villains finder: paginated catalog by category, search with advanced filters, detailed character sheet, and persistent favorites. Consumes a NestJS API.',
     },
     techStack: ['React', 'TypeScript', 'TanStack Query', 'Tailwind', 'shadcn/ui', 'React Router'],
+    imageUrl: heroesImage,
     projectUrl: 'https://github.com/shechoruiz/heroes-finder-web',
   },
   {
