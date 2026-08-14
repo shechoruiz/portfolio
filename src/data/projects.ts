@@ -4,6 +4,19 @@ import shelfImage from '../assets/images/TiendaShelf.webp'
 
 export const projects: Project[] = [
   {
+    id: 'heroes-finder-web',
+    title: {
+      es: 'Heroes Finder Web',
+      en: 'Heroes Finder Web',
+    },
+    description: {
+      es: 'Buscador de héroes y villanos de DC y Marvel: catálogo paginado por categorías, búsqueda con filtros avanzados, ficha detallada de cada personaje y favoritos persistentes. Consume una API NestJS.',
+      en: 'DC and Marvel heroes and villains finder: paginated catalog by category, search with advanced filters, detailed character sheet, and persistent favorites. Consumes a NestJS API.',
+    },
+    techStack: ['React', 'TypeScript', 'TanStack Query', 'Tailwind', 'shadcn/ui', 'React Router'],
+    projectUrl: 'https://github.com/shechoruiz/heroes-finder-web',
+  },
+  {
     id: 'colombia-match-predictor',
     title: {
       es: 'Colombia Match Predictor',
@@ -63,18 +76,5 @@ export const projects: Project[] = [
     },
     techStack: ['Node.js', 'TypeScript', 'MySQL', 'AWS'],
     projectUrl: 'https://api-comercio-electronico.netlify.app',
-  },
-  {
-    id: 'dashboard-analytics',
-    title: {
-      es: 'Dashboard Analytics',
-      en: 'Analytics Dashboard',
-    },
-    description: {
-      es: 'Dashboard de visualización de datos en tiempo real con gráficos interactivos y filtros dinámicos.',
-      en: 'Real-time data visualization dashboard with interactive charts and dynamic filters.',
-    },
-    techStack: ['React', 'Node.js', 'TypeScript', 'SASS'],
-    projectUrl: 'https://dashboard-analytics.netlify.app',
   },
 ]

@@ -18,11 +18,11 @@ describe('Projects', () => {
 
   it('renders all project cards', () => {
     renderProjects()
+    expect(screen.getByText('Heroes Finder Web')).toBeInTheDocument()
     expect(screen.getByText('Colombia Match Predictor')).toBeInTheDocument()
     expect(screen.getByText('Shelf — E-commerce Multi-tenant')).toBeInTheDocument()
     expect(screen.getByText('Gestor de Tareas')).toBeInTheDocument()
     expect(screen.getByText('API de Comercio Electrónico')).toBeInTheDocument()
-    expect(screen.getByText('Dashboard Analytics')).toBeInTheDocument()
   })
 
   it('renders project section with id for anchor scrolling', () => {
